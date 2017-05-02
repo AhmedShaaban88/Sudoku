@@ -1,0 +1,101 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+body h1 {
+  text-align: center;
+  font-size: 50px;
+  font-family: sans-serif;
+  color: black;
+}
+
+body #status {
+  text-align: center;
+  font-size: 45px;
+}
+
+.btns {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 10%;
+}
+
+body div a {
+  text-decoration: none;
+}
+
+body table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 1% auto;
+}
+
+body table td {
+  height: 19px;
+}
+
+body table td input {
+  height: 50px;
+  width: 55px;
+  font-size: 40px;
+  text-align: center;
+}
+
+body table .squre {
+  border: 2px solid black;
+}
+
+.button {
+  position: relative;
+  display: block;
+  height: 45px;
+  width: 150px;
+  margin: 10px 7px;
+  padding: 5px 5px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: #383736;
+  border: 2px #383736 solid;
+  border-radius: 4px;
+  text-transform: uppercase;
+  outline: 0;
+  overflow: hidden;
+  background: none;
+  z-index: 1;
+  cursor: pointer;
+  -webkit-transition: 0.08s ease-in;
+  transition: 0.08s ease-in;
+}
+.show{
+      background-color: aqua;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  -webkit-animation: showme 1s;
+  animation: showme 1s;
+}
+@-webkit-keyframes showme{
+    from{opacity: 0}
+    to{opacity: 1}
+}
+@keyframes showme{
+    from{opacity: 0}
+    to{opacity: 1}
+}
+#bfs{
+    margin: auto;
+    text-align: center;
+}
+#bfs p{
+    display: none;
+   font-size: 25px;
+}
+#bfs h2{
+   
+    font-size: 30px;
+}

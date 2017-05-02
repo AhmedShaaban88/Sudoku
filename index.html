@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ahmed Shaaban & Ahmed Fraag & Ahmed Behiri" />
+    <meta name="description" content="Sudoku" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- HTML5 shim and for IE8 support of HTML5 elements-->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--site's title-->
+    <title>SUDOKU-GAME</title>
+    <!-- main style-->
+    <link href="styles/main.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+   
+    <h1>SUDOKU GAME</h1>
+     <h2 id="status"></h2>
+      <div class="btns">
+       <button value="Display Solution" id="displaybtn" class="button">Show Solution</button>
+        <button value="Check Solution" id="checkbtn" class="button">Check Solution</button>
+        <button value="BFS" id="bfsbtn" class="button">BFS</button>
+        <button value="DFS" id="dfsbtn" class="button">DFS</button>
+        <button value="DLS" id="dlsbtn" class="button">DLS</button>
+        <button value="ids" id="idsbtn" class="button">IDS</button>
+         <button value="ucs" id="ucsbtn" class="button">UCS</button>
+<a value="NewGame" id="newbtn" href="index.html" class="button">New Game</a>
+       </div>
+        <table>
+               <table>
+                <tr>
+                    <td><input type="number" min="1" max="9" class="squre squre-1 row-1 col-1" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-1 row-1 col-2" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-1 row-1 col-3" onchange="checkValidation(this)"/></td>
+                   <td><input type="number" min="1" max="9"  class="squre squre-2 row-1 col-4" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-2 row-1 col-5" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-2 row-1 col-6" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-3 row-1 col-7" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-3 row-1 col-8" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-3 row-1 col-9" onchange="checkValidation(this)"/></td>
+                   </tr>
+                    <tr>
+                    <td><input type="number" min="1" max="9" class="squre squre-1 row-2 col-1" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-1 row-2 col-2" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-1 row-2 col-3" onchange="checkValidation(this)"/></td>
+                   <td><input type="number" min="1" max="9"  class="squre squre-2 row-2 col-4" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-2 row-2 col-5" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-2 row-2 col-6" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-3 row-2 col-7" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-3 row-2 col-8" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-3 row-2 col-9" onchange="checkValidation(this)"/></td>
+                   </tr>
+                    <tr>
+                    <td><input type="number" min="1" max="9" class="squre squre-1 row-3 col-1" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-1 row-3 col-2" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-1 row-3 col-3" onchange="checkValidation(this)"/></td>
+                   <td><input type="number" min="1" max="9"  class="squre squre-2 row-3 col-4" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-2 row-3 col-5" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-2 row-3 col-6" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-3 row-3 col-7" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-3 row-3 col-8" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-3 row-3 col-9" onchange="checkValidation(this)"/></td>
+                   </tr>
+                 <tr>
+                    <td><input type="number" min="1" max="9" class="squre squre-4 row-4 col-1" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-4 row-4 col-2" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-4 row-4 col-3" onchange="checkValidation(this)"/></td>
+                   <td><input type="number" min="1" max="9"  class="squre squre-5 row-4 col-4" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-5 row-4 col-5" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-5 row-4 col-6" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-6 row-4 col-7" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-6 row-4 col-8" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-6 row-4 col-9" onchange="checkValidation(this)"/></td>
+                   </tr>
+                <tr>
+                    <td><input type="number" min="1" max="9" class="squre squre-4 row-5 col-1" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-4 row-5 col-2" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-4 row-5 col-3" onchange="checkValidation(this)"/></td>
+                   <td><input type="number" min="1" max="9"  class="squre squre-5 row-5 col-4" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-5 row-5 col-5" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-5 row-5 col-6" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-6 row-5 col-7" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-6 row-5 col-8" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-6 row-5 col-9" onchange="checkValidation(this)"/></td>
+                   </tr>
+                <tr>
+                    <td><input type="number" min="1" max="9" class="squre squre-4 row-6 col-1" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-4 row-6 col-2" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-4 row-6 col-3" onchange="checkValidation(this)"/></td>
+                   <td><input type="number" min="1" max="9"  class="squre squre-5 row-6 col-4" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-5 row-6 col-5" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-5 row-6 col-6" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-6 row-6 col-7" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-6 row-6 col-8" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-6 row-6 col-9" onchange="checkValidation(this)"/></td>
+                   </tr>
+                 <tr>
+                    <td><input type="number" min="1" max="9" class="squre squre-7 row-7 col-1" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-7 row-7 col-2" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-7 row-7 col-3" onchange="checkValidation(this)"/></td>
+                   <td><input type="number" min="1" max="9"  class="squre squre-8 row-7 col-4" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-8 row-7 col-5" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-8 row-7 col-6" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-9 row-7 col-7" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-9 row-7 col-8" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-9 row-7 col-9" onchange="checkValidation(this)"/></td>
+                   </tr>
+                   <tr>
+                    <td><input type="number" min="1" max="9" class="squre squre-7 row-8 col-1" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-7 row-8 col-2" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-7 row-8 col-3" onchange="checkValidation(this)"/></td>
+                   <td><input type="number" min="1" max="9"  class="squre squre-8 row-8 col-4" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-8 row-8 col-5" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-8 row-8 col-6" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-9 row-8 col-7" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-9 row-8 col-8" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-9 row-8 col-9" onchange="checkValidation(this)"/></td>
+                   </tr>
+                   <tr>
+                    <td><input type="number" min="1" max="9" class="squre squre-7 row-9 col-1" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-7 row-9 col-2" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-7 row-9 col-3" onchange="checkValidation(this)"/></td>
+                   <td><input type="number" min="1" max="9"  class="squre squre-8 row-9 col-4" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-8 row-9 col-5" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-8 row-9 col-6" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-9 row-9 col-7" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-9 row-9 col-8" onchange="checkValidation(this)"/></td>
+                    <td><input type="number" min="1" max="9" class="squre squre-9 row-9 col-9" onchange="checkValidation(this)"/></td>
+                   </tr>
+                </table>
+            
+               
+        </table>
+            <div id="bfs">
+               <h2></h2>
+                <p></p>
+            </div>   
+   
+    
+    <!--local script-->
+    <script src="scripts/main.js"></script>
+        <script src="scripts/priorityQueue.js"></script>
+ <script src="scripts/ai.js"></script>
+</body>
+
+</html>
